@@ -37,7 +37,8 @@ date: "${name.slice(0, 10)}"
 description: ""
 ---
 
-Notes about this talk (not shown on the site).
+This is the details file for a PDF talk; it is not shown on the site.
+`npm run dev` can't show PDF talks. To see this one: `npm run build`, then `npm run serve`.
 `);
 const mb = (statSync(pdf).size / 1e6).toFixed(1);
 console.log(`Added ${name}/slides.pdf (${mb} MB) and ${name}/talk.md — fill in event and description there.`);

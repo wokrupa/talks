@@ -1,12 +1,12 @@
 # How to use this talks site
 
-The site is at `https://YOUR-USERNAME.github.io/talks/`. Every `git push` to `main`
+The site is at `https://wokrupa.github.io/talks/`. Every `git push` to `main`
 rebuilds and redeploys it within 2–3 minutes; watch the build in the repo's **Actions** tab.
 
 ## First time on a new machine
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/talks.git
+git clone https://github.com/wokrupa/talks.git
 cd talks
 npm install
 ```

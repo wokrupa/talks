@@ -1,0 +1,41 @@
+# Build the talks and publish them with GitLab Pages on every push to the
+# default branch. Merge requests get a build check (and a downloadable preview).
+
+image: node:22-bookworm
+
+variables:
+  # Marp uses Chromium for PDF export; its sandbox doesn't work in containers.
+  CHROME_NO_SANDBOX: "true"
+  CHROME_PATH: /usr/bin/chromium
+
+.build: &build
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq --no-install-recommends chromium fonts-noto-color-emoji > /dev/null
+    - npm ci --cache .npm --prefer-offline
+  cache:
+    key:
+      files: [package-lock.json]
+    paths: [.npm/]
+
+# Publish the site. The job must be called `pages` and output to public/.
+pages:
+  <<: *build
+  stage: deploy
+  script:
+    - node scripts/build.mjs --out public
+  artifacts:
+    paths: [public]
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# Check that merge requests still build; download the result from the job page.
+preview:
+  <<: *build
+  stage: test
+  script:
+    - node scripts/build.mjs --out public
+  artifacts:
+    paths: [public]
+    expire_in: 1 week
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"

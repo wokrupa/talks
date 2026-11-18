@@ -1,0 +1,155 @@
+/* @theme talks */
+/*
+ * A small Marp theme. Use it with `theme: talks` in a deck's front matter.
+ * Slide classes:  <!-- _class: title -->   cover slide
+ *                 <!-- _class: section --> section divider
+ *                 <!-- _class: invert -->  dark slide
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg: #fbfaf7;
+  --fg: #1d2433;
+  --muted: #5d6779;
+  --accent: #2f5bea;
+  --accent-2: #e8590c;
+  --code-bg: #eef1f7;
+  --rule: #dfe3ec;
+}
+
+section {
+  width: 1280px;
+  height: 720px;
+  padding: 64px 80px 72px;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 28px;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+h1, h2, h3 {
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 56px; font-weight: 800; }
+h2 {
+  font-size: 42px;
+  font-weight: 800;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--accent);
+  align-self: flex-start;
+}
+h3 { font-size: 32px; font-weight: 600; color: var(--accent); }
+
+a { color: var(--accent); }
+strong { color: var(--accent-2); }
+
+ul, ol { margin: 0.2em 0; padding-left: 1.2em; }
+li { margin: 0.25em 0; }
+li::marker { color: var(--accent); }
+
+code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85em;
+  font-variant-ligatures: none;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+}
+pre {
+  background: var(--code-bg);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 22px;
+  line-height: 1.5;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+
+blockquote {
+  margin: 0.5em 0;
+  padding: 0.2em 0 0.2em 24px;
+  border-left: 5px solid var(--accent-2);
+  color: var(--muted);
+  font-style: italic;
+}
+
+table { border-collapse: collapse; font-size: 24px; }
+th, td { padding: 8px 18px; border-bottom: 1px solid var(--rule); text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+
+img { max-width: 100%; }
+
+/* Page number and footer */
+section { position: relative; }
+section::after {
+  position: absolute;
+  font-size: 18px;
+  color: var(--muted);
+  right: 40px;
+  bottom: 26px;
+}
+header, footer { position: absolute; margin: 0; }
+section::after, footer { line-height: 1; padding: 0; }
+footer {
+  font-size: 18px;
+  color: var(--muted);
+  left: 80px;
+  bottom: 26px;
+}
+
+/* Two columns: wrap content in <div class="cols"><div>…</div><div>…</div></div> */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+/* --- Title slide ------------------------------------------------------- */
+section.title {
+  justify-content: center;
+  background:
+    radial-gradient(900px 500px at 85% 10%, rgba(47, 91, 234, 0.18), transparent 70%),
+    radial-gradient(700px 400px at 10% 100%, rgba(232, 89, 12, 0.14), transparent 70%),
+    var(--bg);
+}
+section.title h1 { font-size: 72px; margin-bottom: 0.2em; }
+section.title h2 {
+  border: none;
+  padding: 0;
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 1.6em;
+}
+section.title p { margin: 0.15em 0; font-size: 26px; }
+section.title p:last-of-type {
+  margin-top: 1em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+section.title::after { display: none; }
+
+/* --- Section divider --------------------------------------------------- */
+section.section {
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+}
+section.section h1, section.section h2 { color: #fff; border-color: #fff; }
+
+/* --- Dark slide -------------------------------------------------------- */
+section.invert {
+  --bg: #121826;
+  --fg: #e8ecf4;
+  --muted: #9aa5b8;
+  --accent: #7c9cff;
+  --accent-2: #ffa94d;
+  --code-bg: #1e2638;
+  --rule: #2c3550;
+}

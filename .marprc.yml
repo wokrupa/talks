@@ -1,0 +1,4 @@
+# Applies to `npm run dev` and `npm run build`.
+themeSet: ./theme/
+html: true
+allowLocalFiles: true

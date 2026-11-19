@@ -2,10 +2,11 @@
   {
     "title": "The commissioning and operational experience of LHCb - Upstream Tracker",
     "date": "2025-07-09",
-    "event": "EPS-HEP 2025",
+    "event": "EPS-HEP 2025 · Poster",
     "event_url": "https://indico.in2p3.fr/event/33627/contributions/156100/",
     "pdf": "https://indico.in2p3.fr/event/33627/contributions/156100/attachments/94151/144366/EPS.pdf",
-    "description": "Commissioning and first years of operation of the Upstream Tracker, the new silicon strip detector of the LHCb Upgrade I."
+    "description": "Commissioning and first years of operation of the Upstream Tracker, the new silicon strip detector of the LHCb Upgrade I.",
+    "label": "View poster"
   },
   {
     "title": "Comprehensive studies on calibration parameters of the LHCb Upstream Tracker",

@@ -1,8 +1,20 @@
 [
   {
-    "title": "An older talk that only lives on Indico",
-    "date": "2026-05-28",
-    "event": "Some Workshop",
-    "event_url": "https://indico.cern.ch/"
+    "title": "The commissioning and operational experience of LHCb - Upstream Tracker",
+    "date": "2025-07-09",
+    "event": "EPS-HEP 2025",
+    "event_url": "https://indico.in2p3.fr/event/33627/contributions/156100/",
+    "pdf": "https://indico.in2p3.fr/event/33627/contributions/156100/attachments/94151/144366/EPS.pdf",
+    "description": "Commissioning and first years of operation of the Upstream Tracker, the new silicon strip detector of the LHCb Upgrade I."
+  },
+  {
+    "title": "Comprehensive studies on calibration parameters of the LHCb Upstream Tracker",
+    "date": "2025-02-04",
+    "event": "Poster",
+    "event_url": "https://cds.cern.ch/record/2925980",
+    "event_label": "CDS",
+    "pdf": "https://cds.cern.ch/record/2925980/files/Poster-2025-1231.pdf",
+    "label": "View poster",
+    "description": "Noise evolution, sensor-type comparisons and single-event upsets in the readout chips, from Upstream Tracker calibration data taken in 2024."
   }
 ]

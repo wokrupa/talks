@@ -160,7 +160,7 @@ function styles() {
   return `
   :root {
     --text: #f3f5fb; --muted: #b5bdd3; --glass: rgba(255,255,255,0.075);
-    --glass-border: rgba(255,255,255,0.16); --accent: #8fb0ff;
+    --glass-border: rgba(255,255,255,0.16); --accent: #8ec5ff;
   }
   * { box-sizing: border-box; }
   html { color-scheme: dark; }
@@ -168,10 +168,11 @@ function styles() {
     margin: 0; min-height: 100vh; color: var(--text);
     font-family: 'Inter', system-ui, sans-serif; line-height: 1.5;
     background:
-      radial-gradient(60vw 50vh at 15% 10%, rgba(80,120,255,0.55), transparent 70%),
-      radial-gradient(50vw 50vh at 90% 30%, rgba(255,120,60,0.40), transparent 70%),
-      radial-gradient(60vw 60vh at 50% 100%, rgba(40,200,170,0.35), transparent 70%),
-      #0c1222;
+      /* LHCb-style blues on a deep navy base */
+      radial-gradient(60vw 50vh at 15% 10%, rgba(30,110,230,0.60), transparent 70%),
+      radial-gradient(50vw 50vh at 90% 35%, rgba(0,150,255,0.35), transparent 70%),
+      radial-gradient(70vw 60vh at 50% 100%, rgba(20,70,190,0.55), transparent 70%),
+      linear-gradient(180deg, #0a2a66 0%, #061a44 100%);
     background-attachment: fixed;
   }
   body::before { /* faint grid behind the glass */
@@ -202,7 +203,7 @@ function styles() {
     text-decoration: none; color: var(--text); border: 1px solid var(--glass-border); background: rgba(255,255,255,0.06);
   }
   .btn:hover { background: rgba(255,255,255,0.14); }
-  .btn.primary { background: #f3f5fb; color: #0c1222; border-color: transparent; }
+  .btn.primary { background: #f3f5fb; color: #061a44; border-color: transparent; }
   .btn.primary:hover { background: #fff; }
   .spacer { flex: 1; }
   .link { color: var(--muted); font-size: 13px; text-decoration: none; }
@@ -256,8 +257,19 @@ function meta(t) {
 
 function indexPage(talks) {
   const cards = talks.map((t) => {
+    if (t.external && t.pdf) {
+      // Slides hosted elsewhere: same buttons as a local talk, all pointing off-site.
+      const buttons = [`<a class="btn primary" href="${esc(t.pdf)}">${esc(t.label || 'View slides')}</a>`];
+      if (t.event_url) buttons.push(`<a class="btn" href="${esc(t.event_url)}">${esc(t.event_label || 'Event')} ↗</a>`);
+      return `<article class="card glass">
+  <div class="mono">${meta(t)}</div>
+  <h2><a href="${esc(t.event_url || t.pdf)}">${esc(t.title)}</a></h2>
+  ${t.description ? `<p>${esc(t.description)}</p>` : ''}
+  <div class="row">${buttons.join('')}</div>
+</article>`;
+    }
     if (t.external) {
-      const href = t.event_url || t.pdf || '#';
+      const href = t.event_url || '#';
       return `<a class="card glass external" href="${esc(href)}">
   <div class="mono">${meta(t)} ↗</div>
   <h2>${esc(t.title)}</h2>
